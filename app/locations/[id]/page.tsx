@@ -1,25 +1,27 @@
-import { locations } from "@/lib/locations"
+import { getLocations, getLocationBySlug } from "@/sanity/lib/queries"
+import { resolveImage } from "@/sanity/lib/image"
 import { notFound } from "next/navigation"
-import LocationPageWrapper from "./location-page-wrapper"
+import LocationContent from "./location-content"
 
 export const generateStaticParams = async () => {
-  return locations.map((location) => ({
-    id: location.id,
-  }))
+  const locations = await getLocations()
+  return locations.map((location) => ({ id: location.slug }))
 }
 
 export const metadata = {
-  title: "Location | Penne Pazze",
+  title: "Location | PennePazze",
   description: "Visit our restaurant location",
 }
 
 export default async function LocationPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const location = locations.find((l) => l.id === id)
+  const location = await getLocationBySlug(id)
 
   if (!location) {
     notFound()
   }
 
-  return <LocationPageWrapper location={location} />
+  const imageSrc = resolveImage(location.image as never, '/images/location-hero.jpg', 1200, 600)
+
+  return <LocationContent location={{ ...location, imageSrc }} />
 }

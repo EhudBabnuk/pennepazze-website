@@ -26,4 +26,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Claude Code session data (may contain tokens from shell commands)
 .claude/
