@@ -39,6 +39,7 @@ export const aboutPage = defineType({
       fields: [
         defineField({ name: 'heading', title: 'Section Heading', type: 'string', initialValue: 'From Our Family to Your Table.' }),
         defineField({ name: 'paragraphs', title: 'Story Paragraphs', type: 'array', of: [{ type: 'text' }], description: 'Add each paragraph as a separate item.' }),
+        defineField({ name: 'image', title: 'Story Image', type: 'image', options: { hotspot: true }, description: 'Optional image shown alongside the story text.' }),
       ],
     }),
 
@@ -57,6 +58,9 @@ export const aboutPage = defineType({
           of: [{ type: 'string' }],
           description: 'Each item appears as a checkmark line.',
         }),
+        defineField({ name: 'qualityImage', title: 'Quality Tile Image', type: 'image', options: { hotspot: true } }),
+        defineField({ name: 'passionImage', title: 'Passion Tile Image', type: 'image', options: { hotspot: true } }),
+        defineField({ name: 'traditionImage', title: 'Tradition Tile Image', type: 'image', options: { hotspot: true } }),
       ],
     }),
 

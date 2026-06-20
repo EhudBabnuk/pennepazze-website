@@ -24,6 +24,7 @@ export const pressPage = defineType({
 
     defineField({ name: 'heroHeading', title: 'Page Heading', type: 'string', group: 'hero', initialValue: 'In the Press' }),
     defineField({ name: 'heroSubheading', title: 'Page Subheading', type: 'string', group: 'hero', initialValue: 'What Nashville is saying about us.' }),
+    defineField({ name: 'featuredImage', title: 'Featured Editorial Image', type: 'image', group: 'hero', options: { hotspot: true }, description: 'Optional editorial photo shown on the press page.' }),
 
     defineField({
       name: 'googleRating',

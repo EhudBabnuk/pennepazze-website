@@ -24,9 +24,9 @@ export default async function CareersPage() {
   const formSection = pageData?.formSection ?? {}
 
   const teamTiles = [
-    { title: 'Kitchen Team', image: '/images/team-kitchen.jpg' },
-    { title: 'Service Team', image: '/images/team-service.jpg' },
-    { title: 'Delivery Team', image: '/images/team-delivery.jpg' },
+    { title: 'Kitchen Team', image: resolveImage((pageData as any)?.kitchenTeamImage, '/images/team-kitchen.jpg', 600, 600) },
+    { title: 'Service Team', image: resolveImage((pageData as any)?.serviceTeamImage, '/images/team-service.jpg', 600, 600) },
+    { title: 'Delivery Team', image: resolveImage((pageData as any)?.deliveryTeamImage, '/images/team-delivery.jpg', 600, 600) },
   ]
 
   return (

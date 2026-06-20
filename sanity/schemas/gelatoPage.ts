@@ -34,6 +34,7 @@ export const gelatoPage = defineType({
       group: 'differentiators',
       fields: [
         defineField({ name: 'heading', title: 'Section Heading', type: 'string', initialValue: 'What Makes It Different' }),
+        defineField({ name: 'showcaseImage', title: 'Section Showcase Image', type: 'image', options: { hotspot: true } }),
         defineField({
           name: 'items',
           title: 'Items',
@@ -59,6 +60,7 @@ export const gelatoPage = defineType({
       description: 'Update this when Gelato Pazzo opens.',
       fields: [
         defineField({ name: 'heading', title: 'Heading', type: 'string', initialValue: 'Now Open' }),
+        defineField({ name: 'showcaseImage', title: 'Showcase Image', type: 'image', options: { hotspot: true } }),
         defineField({ name: 'address', title: 'Address', type: 'string', description: '[To be confirmed once location is set]' }),
         defineField({ name: 'buttonLabel', title: 'Button Label', type: 'string', initialValue: 'VISIT GELATO PAZZO' }),
         defineField({ name: 'externalUrl', title: 'External Website URL', type: 'url', description: 'Link to gelatopazzo.com once the site is live.' }),

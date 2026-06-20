@@ -8,6 +8,7 @@ export const careersPage = defineType({
     { name: 'seo', title: 'SEO' },
     { name: 'hero', title: 'Hero' },
     { name: 'intro', title: 'Introduction' },
+    { name: 'team', title: 'Team Images' },
     { name: 'benefits', title: 'Why Work Here' },
     { name: 'roles', title: 'Open Positions' },
     { name: 'form', title: 'Application Form' },
@@ -23,6 +24,10 @@ export const careersPage = defineType({
         defineField({ name: 'description', title: 'Meta Description', type: 'text', rows: 2, initialValue: 'Join the PennePazze family. We are growing fast and looking for passionate, hardworking people for our Nashville, Murfreesboro, Germantown, and Franklin locations.' }),
       ],
     }),
+
+    defineField({ name: 'kitchenTeamImage', title: 'Kitchen Team Tile Image', type: 'image', group: 'team', options: { hotspot: true } }),
+    defineField({ name: 'serviceTeamImage', title: 'Service Team Tile Image', type: 'image', group: 'team', options: { hotspot: true } }),
+    defineField({ name: 'deliveryTeamImage', title: 'Delivery Team Tile Image', type: 'image', group: 'team', options: { hotspot: true } }),
 
     defineField({ name: 'heroHeading', title: 'Hero Heading', type: 'string', group: 'hero', initialValue: 'Come Work With Us' }),
     defineField({ name: 'heroSubheading', title: 'Hero Subheading', type: 'string', group: 'hero', initialValue: 'We are growing — and we are looking for people who love food, people, and doing things right.' }),

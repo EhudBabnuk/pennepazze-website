@@ -36,6 +36,7 @@ export const cateringPage = defineType({
       group: 'offerings',
       fields: [
         defineField({ name: 'heading', title: 'Section Heading', type: 'string', initialValue: "What We Can Do For You" }),
+        defineField({ name: 'contentImage', title: 'Section Image', type: 'image', options: { hotspot: true }, description: 'Optional image shown alongside the offerings.' }),
         defineField({
           name: 'offerings',
           title: 'Offering Cards',

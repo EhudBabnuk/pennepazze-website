@@ -12,6 +12,9 @@ export default async function AboutPage() {
 
   const heroImage = resolveImage(pageData?.heroImage as never, '/images/about-hero.jpg', 1600, 900)
   const beliefs = pageData?.beliefsSection ?? {}
+  const qualityImage = resolveImage((beliefs as any).qualityImage, '/images/about-quality.jpg', 600, 600)
+  const passionImage = resolveImage((beliefs as any).passionImage, '/images/about-passion.jpg', 600, 600)
+  const traditionImage = resolveImage((beliefs as any).traditionImage, '/images/about-tradition.jpg', 600, 600)
   const beliefItems: string[] = beliefs.items ?? [
     'Fresh pasta and sauces made in-house, every single day',
     'No artificial ingredients — ever',
@@ -57,9 +60,9 @@ export default async function AboutPage() {
           {/* Beliefs grid - image tiles */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: 'Quality', text: beliefItems[0] ?? 'Fresh pasta and sauces made in-house, every single day.', image: '/images/about-quality.jpg' },
-              { title: 'Passion', text: beliefItems[1] ?? 'No artificial ingredients — ever.', image: '/images/about-passion.jpg' },
-              { title: 'Tradition', text: beliefItems[2] ?? 'No preservatives, no seed oils — not now, not ever.', image: '/images/about-tradition.jpg' },
+              { title: 'Quality', text: beliefItems[0] ?? 'Fresh pasta and sauces made in-house, every single day.', image: qualityImage },
+              { title: 'Passion', text: beliefItems[1] ?? 'No artificial ingredients — ever.', image: passionImage },
+              { title: 'Tradition', text: beliefItems[2] ?? 'No preservatives, no seed oils — not now, not ever.', image: traditionImage },
             ].map((tile, index) => (
               <div key={tile.title} className={index === 1 ? "md:translate-y-10" : ""}>
                 <PassionTile title={tile.title} text={tile.text} image={tile.image} />
