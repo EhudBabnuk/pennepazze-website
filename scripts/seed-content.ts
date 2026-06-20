@@ -73,7 +73,7 @@ async function seed() {
       title: 'PennePazze — Crazy Good Italian | Nashville & Murfreesboro',
       description: 'Authentic Italian made fresh daily by a team straight from Italy. Handmade pasta, house-crafted sauces, never any seed oils. Fast casual dining in Nashville and Murfreesboro.',
     },
-    heroVideoUrl: 'https://player.vimeo.com/video/750022321?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0',
+    heroVideoUrl: 'https://player.vimeo.com/video/750022321?autoplay=1&muted=1&loop=1&playsinline=1&controls=0&title=0&byline=0&portrait=0&dnt=1',
     heroHeadline: 'Crazy Good Italian Food.',
     heroSubheadline: 'Handmade pasta. Clean ingredients. No shortcuts.',
     heroBody: 'At PennePazze, everything is made fresh daily — from our pasta to our sauces. No preservatives. No seed oils. Ever. Just real Italian comfort food done right.',

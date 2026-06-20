@@ -13,21 +13,41 @@ export default async function HomePage() {
     getUpdatesSlides(),
   ])
 
-  const heroVideoUrl = pageData?.heroVideoUrl || 'https://player.vimeo.com/video/750022321?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0'
+  // NOTE: background=1 requires Vimeo Plus/Pro. Without it, autoplay+muted is used.
+  // If the video owner has embedding disabled, the iframe may show a Vimeo error page.
+  // The bg-black/70 overlay below ensures any Vimeo error is not visible to users.
+  const heroVideoUrl = pageData?.heroVideoUrl || 'https://player.vimeo.com/video/750022321?autoplay=1&muted=1&loop=1&playsinline=1&controls=0&title=0&byline=0&portrait=0&dnt=1'
+  const heroHeadline = pageData?.heroHeadline ?? 'Crazy Good Italian Food.'
+  const heroSubheadline = pageData?.heroSubheadline ?? 'Handmade pasta. Clean ingredients. No shortcuts.'
+  const heroBody = pageData?.heroBody ?? ''
+  const heroCtaOrder = pageData?.heroCtaOrder ?? 'ORDER NOW'
+  const heroCtaMenu = pageData?.heroCtaMenu ?? 'VIEW MENU'
   const authenticity = pageData?.authenticityStrip ?? {}
   const storyTeaser = pageData?.storyTeaser ?? {}
 
   return (
     <>
       {/* Full-Bleed Video Hero */}
-      <section className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden h-[75svh] md:h-[85svh]">
+      {/*
+        Layer order:
+          0 — bg-[#111] fallback (section background-color)
+          1 — Vimeo iframe (absolute, z-0, pointer-events:none)
+          2 — Dark overlay bg-black/70 (hides Vimeo error if video fails; dims video if it plays)
+          3 — Gradient vignette (top/bottom fade)
+          4 — Hero content + CTAs (relative z-20)
+          5 — Scroll button pinned to bottom (absolute z-20)
+      */}
+      <section className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden h-[75svh] md:h-[85svh] bg-[#111]">
+
+        {/* Vimeo background iframe */}
         <div className="hero-media">
           <iframe
             src={heroVideoUrl}
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
             referrerPolicy="strict-origin-when-cross-origin"
-            title="PennePazze restaurant ambiance video"
+            title=""
+            aria-hidden="true"
             style={{
               position: "absolute", top: "50%", left: "50%",
               transform: "translate(-50%, -50%)",
@@ -36,12 +56,44 @@ export default async function HomePage() {
               minWidth: "100%", minHeight: "100%", border: "0", pointerEvents: "none",
             }}
           />
-          <div className="absolute inset-0 bg-black/30 z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50 z-[2]" />
+          {/* Solid dark base — 70% opacity hides any Vimeo error message while letting video show at 30% */}
+          <div className="absolute inset-0 bg-black/70 z-[1]" />
+          {/* Gradient vignette for depth */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-[2]" />
         </div>
-        <div className="hero-content h-full flex items-end justify-center pb-10 md:pb-12">
-          <HeroScrollButton />
+
+        {/* Hero content */}
+        <div className="hero-content h-full flex flex-col items-center justify-center text-center px-4 gap-5 pb-16 md:pb-20">
+          <h1 className="text-white max-w-4xl">{heroHeadline}</h1>
+          <p className="text-white/80 max-w-2xl" style={{ fontFamily: "var(--font-body), 'Open Sans', sans-serif", fontWeight: 500, fontSize: "1.125rem", lineHeight: 1.7 }}>
+            {heroSubheadline}
+          </p>
+          {heroBody && (
+            <p className="hidden md:block text-white/65 max-w-xl" style={{ fontFamily: "var(--font-body), 'Open Sans', sans-serif", fontWeight: 400, fontSize: "1rem", lineHeight: 1.75 }}>
+              {heroBody}
+            </p>
+          )}
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
+            <PrimaryCTAButton asChild>
+              <Link href="/locations">{heroCtaOrder}</Link>
+            </PrimaryCTAButton>
+            <Link
+              href="/menu"
+              className="inline-flex items-center justify-center rounded px-6 py-3 border border-white/70 text-white uppercase tracking-wide leading-normal transition-colors duration-200 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50"
+              style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif", fontWeight: 700, fontSize: "0.875rem" }}
+            >
+              {heroCtaMenu}
+            </Link>
+          </div>
         </div>
+
+        {/* Scroll indicator pinned to bottom */}
+        <div className="absolute bottom-8 md:bottom-10 left-0 right-0 z-20 flex justify-center pointer-events-none">
+          <div className="pointer-events-auto">
+            <HeroScrollButton />
+          </div>
+        </div>
+
       </section>
 
       {/* Explore Our Offerings — static navigation tiles */}
