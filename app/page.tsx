@@ -13,7 +13,7 @@ export default async function HomePage() {
     getUpdatesSlides(),
   ])
 
-  const heroVideoUrl = pageData?.heroVideoUrl ?? 'https://player.vimeo.com/video/750022321?autoplay=1&muted=1&loop=1&background=1&title=0&byline=0&portrait=0&badge=0'
+  const heroVideoUrl = pageData?.heroVideoUrl || 'https://player.vimeo.com/video/750022321?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0'
   const authenticity = pageData?.authenticityStrip ?? {}
   const storyTeaser = pageData?.storyTeaser ?? {}
 
@@ -36,8 +36,8 @@ export default async function HomePage() {
               minWidth: "100%", minHeight: "100%", border: "0", pointerEvents: "none",
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#D5B13A] to-black" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/30 z-[1]" />
+          <div className="absolute inset-0 bg-black/30 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50 z-[2]" />
         </div>
         <div className="hero-content h-full flex items-end justify-center pb-10 md:pb-12">
           <HeroScrollButton />
