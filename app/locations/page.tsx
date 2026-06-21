@@ -1,5 +1,6 @@
 import { getLocations } from "@/sanity/lib/queries"
 import { resolveImage } from "@/sanity/lib/image"
+import { LocationStatusBadge } from "@/components/ui/location-status-badge"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -37,13 +38,19 @@ export default async function LocationsPage() {
                         </div>
                       )}
                       {!isOpen && (
-                        <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-heading font-bold uppercase tracking-wider px-3 py-1 rounded">
-                          {location.status === 'opening-soon' ? 'Opening Soon' : 'Coming Soon'}
+                        <div className="absolute top-3 left-3">
+                          <LocationStatusBadge
+                            status={location.status}
+                            className="bg-white/90 backdrop-blur-sm shadow-sm"
+                          />
                         </div>
                       )}
                     </div>
                     <div className="p-6 flex flex-col flex-1">
-                      <h3 className="text-foreground mb-1">{location.name}</h3>
+                      <div className="flex items-center gap-2 flex-wrap mb-1">
+                        <h3 className="text-foreground leading-tight">{location.name}</h3>
+                        <LocationStatusBadge status={location.status} />
+                      </div>
                       <p className="text-muted-foreground text-sm mb-4" style={{ fontFamily: "var(--font-body), 'Open Sans', sans-serif", fontWeight: 400 }}>
                         {location.city}{location.state ? `, ${location.state}` : ''}
                       </p>

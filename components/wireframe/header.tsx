@@ -8,11 +8,13 @@ import { Button } from "@/components/ui/button"
 import { PrimaryCTAButton } from "@/components/ui/primary-cta-button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useOrderModal } from "@/components/providers/order-modal-provider"
+import { LocationStatusBadge } from "@/components/ui/location-status-badge"
 
 interface HeaderLocation {
   slug: string
   name: string
   id?: string
+  status?: string
 }
 
 interface HeaderProps {
@@ -41,6 +43,7 @@ export function Header({ locations = [] }: HeaderProps) {
   const normalizedLocations = locations.map((l) => ({
     id: l.slug ?? l.id ?? '',
     name: l.name,
+    status: l.status,
   }))
 
   return (
@@ -81,15 +84,16 @@ export function Header({ locations = [] }: HeaderProps) {
                 </button>
 
                 {link.hasSubmenu && (
-                  <div className="absolute left-0 top-full mt-2 w-56 bg-white border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2 z-50">
+                  <div className="absolute left-0 top-full mt-2 w-64 bg-white border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2 z-50">
                     {normalizedLocations.map((location) => (
                       <Link
                         key={location.id}
                         href={`/locations/${location.id}`}
-                        className="block px-4 py-2 text-sm text-foreground hover:bg-[#FEF0B1] transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 text-sm text-foreground hover:bg-[#FEF0B1] transition-colors"
                         onClick={handleNavLinkClick}
                       >
-                        <div className="font-body text-foreground">{location.name}</div>
+                        <span className="font-body text-foreground flex-1">{location.name}</span>
+                        <LocationStatusBadge status={location.status} />
                       </Link>
                     ))}
                   </div>
@@ -155,9 +159,10 @@ export function Header({ locations = [] }: HeaderProps) {
                               key={location.id}
                               href={`/locations/${location.id}`}
                               onClick={() => { setMobileMenuOpen(false); handleNavLinkClick() }}
-                              className="text-sm text-foreground hover:text-primary transition-colors"
+                              className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors"
                             >
-                              {location.name}
+                              <span>{location.name}</span>
+                              <LocationStatusBadge status={location.status} />
                             </Link>
                           ))}
                         </div>

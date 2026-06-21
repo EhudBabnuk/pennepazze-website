@@ -2,6 +2,7 @@
 
 import { ArrowLeft, MapPin, Clock, Truck, X } from "lucide-react"
 import { useOrderModal } from "@/components/providers/order-modal-provider"
+import { LocationStatusBadge } from "@/components/ui/location-status-badge"
 import { useState } from "react"
 
 interface SanityLocation {
@@ -29,7 +30,7 @@ export function OrderModal({ locations }: OrderModalProps) {
   const [step, setStep] = useState<Step>("branch")
   const [selectedLocation, setSelectedLocation] = useState<SanityLocation | null>(null)
 
-  const orderableLocations = locations.filter((l) => !l.status || l.status === 'open')
+  const isLocationOrderable = (l: SanityLocation) => !l.status || l.status === 'open'
 
   const handleBranchSelect = (loc: SanityLocation) => {
     setSelectedLocation(loc)
@@ -85,20 +86,40 @@ export function OrderModal({ locations }: OrderModalProps) {
         {step === "branch" ? (
           <div className="space-y-3">
             <p className="text-sm text-primary font-semibold mb-5">Where would you like to order from?</p>
-            {orderableLocations.map((loc) => {
+            {locations.map((loc) => {
               const id = loc.slug ?? loc.id ?? loc.name
               const displayAddress = loc.address ?? `${loc.city ?? ''}, ${loc.state ?? ''}`
+              const orderable = isLocationOrderable(loc)
+
+              if (orderable) {
+                return (
+                  <button key={id} onClick={() => handleBranchSelect(loc)}
+                    className="w-full p-4 bg-white border-2 border-accent/20 hover:border-accent hover:shadow-md transition-all rounded-xl text-left group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-5 h-5 text-accent mt-0.5 shrink-0" />
+                      <div>
+                        <div className="font-bold text-foreground text-base group-hover:text-accent transition-colors">{loc.name}</div>
+                        <div className="text-sm text-foreground/60">{displayAddress}</div>
+                      </div>
+                    </div>
+                  </button>
+                )
+              }
+
               return (
-                <button key={id} onClick={() => handleBranchSelect(loc)}
-                  className="w-full p-4 bg-white border-2 border-accent/20 hover:border-accent hover:shadow-md transition-all rounded-xl text-left group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
+                <div key={id}
+                  className="w-full p-4 bg-[#FAFAFA] border border-border/60 rounded-xl opacity-60 cursor-not-allowed select-none">
                   <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-accent mt-0.5 shrink-0" />
-                    <div>
-                      <div className="font-bold text-foreground text-base group-hover:text-accent transition-colors">{loc.name}</div>
-                      <div className="text-sm text-foreground/60">{displayAddress}</div>
+                    <MapPin className="w-5 h-5 text-muted-foreground/50 mt-0.5 shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="font-bold text-muted-foreground text-base">{loc.name}</span>
+                        <LocationStatusBadge status={loc.status} />
+                      </div>
+                      <div className="text-sm text-foreground/40 mt-0.5">{displayAddress}</div>
                     </div>
                   </div>
-                </button>
+                </div>
               )
             })}
           </div>

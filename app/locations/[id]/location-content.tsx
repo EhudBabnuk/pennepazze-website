@@ -2,6 +2,7 @@
 
 import { useOrderModal } from "@/components/providers/order-modal-provider"
 import { PrimaryCTAButton } from "@/components/ui/primary-cta-button"
+import { LocationStatusBadge } from "@/components/ui/location-status-badge"
 import { Phone, MapPin, Clock, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -54,7 +55,10 @@ export default function LocationContent({ location }: LocationContentProps) {
               <p className="text-[#D5B13A] mb-3" style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif", fontWeight: 700, fontSize: "0.875rem", letterSpacing: "0.1em", textTransform: "uppercase" }}>
                 PennePazze
               </p>
-              <h1 className="text-foreground mb-6">{location.name}</h1>
+              <div className="flex items-start gap-3 flex-wrap mb-6">
+                <h1 className="text-foreground leading-tight">{location.name}</h1>
+                <LocationStatusBadge status={location.status} className="mt-2" />
+              </div>
               {location.city && (
                 <p className="subtitle-2 text-[#C1A561] mb-4">{location.city}{location.state ? `, ${location.state}` : ''}</p>
               )}
@@ -78,8 +82,17 @@ export default function LocationContent({ location }: LocationContentProps) {
                   <Image src={location.imageSrc} alt={location.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
                 </div>
               )}
-              {isOpen && (
+              {isOpen ? (
                 <PrimaryCTAButton onClick={openModal} className="px-8 py-3 text-sm">Order Now</PrimaryCTAButton>
+              ) : (
+                <button
+                  disabled
+                  className="inline-flex items-center justify-center px-8 py-3 rounded bg-muted text-muted-foreground cursor-not-allowed opacity-60"
+                  style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif", fontWeight: 700, fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.05em" }}
+                  aria-label="Ordering not yet available at this location"
+                >
+                  {location.status === 'coming-soon' ? 'Coming Soon' : 'Opening Soon'}
+                </button>
               )}
             </div>
 
