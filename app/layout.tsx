@@ -32,7 +32,6 @@ export async function generateMetadata(): Promise<Metadata> {
     title: seo.title ?? 'PennePazze — Crazy Good Italian Cuisine',
     description: seo.description ?? 'PennePazze serves authentic Italian cuisine made fresh daily. Handmade pasta, no seed oils, Nashville &amp; Murfreesboro.',
     keywords: seo.keywords ? seo.keywords.split(',').map((k: string) => k.trim()) : ['italian restaurant', 'penne pazze', 'italian cuisine', 'pasta'],
-    generator: 'v0.app',
     creator: settings?.restaurantName ?? 'PennePazze',
     openGraph: {
       type: 'website',
