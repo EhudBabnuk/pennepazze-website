@@ -1,3 +1,24 @@
+/* Oraqle Script — brand editorial font (used in logo wordmark and hero headings)
+   Source files must be placed in /public/fonts/ to activate.
+   Expected filenames: OraqleScript-Black.woff2, OraqleScript-Black.woff,
+                       OraqleScript-Bold.woff2,  OraqleScript-Bold.woff    */
+@font-face {
+  font-family: 'Oraqle Script';
+  src: url('/fonts/OraqleScript-Black.woff2') format('woff2'),
+       url('/fonts/OraqleScript-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oraqle Script';
+  src: url('/fonts/OraqleScript-Bold.woff2') format('woff2'),
+       url('/fonts/OraqleScript-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import 'tailwindcss';
 @import 'tw-animate-css';
 /* Penne Pazze Design System - Gold/Black Palette */
@@ -45,6 +66,10 @@
   --input: #F4F4F4;
   --ring: #D5B13A;
   --radius: 0.625rem;
+  /* Oraqle Script — brand editorial/hero font (appears in logo wordmark)
+     Place OraqleScript-Black.woff2 + OraqleScript-Bold.woff2 in /public/fonts/
+     to activate. Falls back to system cursive until files are provided. */
+  --font-script: 'Oraqle Script', cursive;
 }
 
 @theme inline {
@@ -94,31 +119,31 @@
     font-family: var(--font-heading), 'Oswald', sans-serif;
   }
   
-  /* H1 - Oswald Black 64px */
+  /* H1 - Oswald Bold 64px (Black/900 unavailable via Google Fonts; 700 used) */
   h1 {
     font-weight: 700;
     font-size: 2.25rem;
     text-transform: uppercase;
-    letter-spacing: -0.025em;
-    line-height: 1.25;
+    letter-spacing: 0.03em;
+    line-height: 1.15;
   }
-  
+
   /* H2 - Oswald Bold 52px */
   h2 {
     font-weight: 700;
     font-size: 1.875rem;
     text-transform: uppercase;
-    letter-spacing: -0.025em;
-    line-height: 1.25;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
   }
-  
+
   /* H3 - Oswald Bold 42px */
   h3 {
     font-weight: 700;
     font-size: 1.5rem;
     text-transform: uppercase;
-    letter-spacing: -0.025em;
-    line-height: 1.25;
+    letter-spacing: 0.015em;
+    line-height: 1.2;
   }
   
   /* H4 - Oswald SemiBold 18px */
@@ -198,7 +223,14 @@
     font-weight: 700;
     font-size: 2.25rem;
     text-transform: uppercase;
-    letter-spacing: -0.025em;
+    letter-spacing: 0.02em;
+  }
+
+  /* Script / editorial class — applied to elements that should use Oraqle Script */
+  .font-script {
+    font-family: var(--font-script);
+    text-transform: none;
+    letter-spacing: 0;
   }
   
   /* Quote Name - Oswald ExtraBold 18px UPPERCASE */

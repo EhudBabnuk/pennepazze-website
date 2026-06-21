@@ -53,7 +53,7 @@ export function CareersForm() {
         <Label htmlFor="message" className="font-heading font-bold text-foreground uppercase text-xs tracking-wider">Tell Us About Yourself</Label>
         <Textarea id="message" rows={5} placeholder="Share your experience and why you'd like to join PennePazze..." className="border-[#E8E8E8] focus:border-[#D5B13A] resize-none" />
       </div>
-      <Button type="submit" className="bg-[#D5B13A] text-black hover:bg-[#C1A561] font-heading font-bold uppercase tracking-wider py-3 rounded transition-colors w-full md:w-auto md:px-12 self-start">
+      <Button type="submit" className="bg-[#D5B13A] text-black hover:bg-[#C1A561] font-heading font-bold uppercase tracking-wider py-3 rounded-full transition-colors w-full md:w-auto md:px-12 self-start">
         Submit Application
       </Button>
     </form>

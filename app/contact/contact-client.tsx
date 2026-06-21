@@ -169,7 +169,7 @@ export function ContactPageClient({ locations, pageData }: { locations: Location
                     </p>
                   </div>
                   {location.featured && (
-                    <span className="bg-[#D5B13A] text-black px-2 py-1 rounded text-xs font-heading font-bold uppercase tracking-wider">Featured</span>
+                    <span className="bg-[#D5B13A] text-black px-2 py-1 rounded-full text-xs font-heading font-bold uppercase tracking-wider">Featured</span>
                   )}
                 </div>
                 {location.address && (

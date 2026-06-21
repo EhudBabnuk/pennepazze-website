@@ -108,7 +108,7 @@ export default async function PressPage() {
             {mediaContact.body ?? 'For press inquiries, partnership opportunities, or media requests:'}
           </p>
           <a href={`mailto:${mediaEmail}`}
-            className="inline-block bg-[#D5B13A] text-black px-8 py-3 font-heading font-bold uppercase text-sm tracking-wide rounded hover:bg-[#C1A561] transition-colors">
+            className="inline-block bg-[#D5B13A] text-black px-8 py-3 font-heading font-bold uppercase text-sm tracking-wide rounded-full hover:bg-[#C1A561] transition-colors">
             {mediaEmail}
           </a>
         </div>

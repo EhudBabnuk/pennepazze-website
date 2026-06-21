@@ -27,7 +27,7 @@ export function ContactForm() {
           <Label htmlFor="message" className="font-heading font-bold text-foreground uppercase text-sm tracking-wider">Message *</Label>
           <Textarea id="message" placeholder="Your message here..." className="border border-border rounded text-foreground" rows={5} required />
         </div>
-        <Button type="submit" className="w-full md:w-auto px-8 py-3 bg-[#D5B13A] text-black font-heading font-bold uppercase text-sm tracking-wider hover:bg-[#C1A561] transition-colors rounded">
+        <Button type="submit" className="w-full md:w-auto px-8 py-3 bg-[#D5B13A] text-black font-heading font-bold uppercase text-sm tracking-wider hover:bg-[#C1A561] transition-colors rounded-full">
           Send Message
         </Button>
       </div>

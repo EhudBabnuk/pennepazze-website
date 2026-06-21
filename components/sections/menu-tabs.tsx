@@ -109,7 +109,7 @@ export function MenuTabs({ categories }: MenuTabsProps) {
                   )}
                   <button
                     onClick={openModal}
-                    className="w-full py-2.5 rounded border border-[#D5B13A] text-[#D5B13A] font-heading font-bold uppercase transition-colors duration-200 hover:bg-[#D5B13A] hover:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D5B13A] focus-visible:ring-offset-2"
+                    className="w-full py-2.5 rounded-full border border-[#D5B13A] text-[#D5B13A] font-heading font-bold uppercase transition-colors duration-200 hover:bg-[#D5B13A] hover:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D5B13A] focus-visible:ring-offset-2"
                     style={{ fontSize: "0.75rem", letterSpacing: "0.05em" }}
                     aria-label={`Order ${item.name}`}
                   >
