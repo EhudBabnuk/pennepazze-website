@@ -180,7 +180,7 @@ export async function getLocationBySlug(slug: string): Promise<SanityLocation | 
 
 const FALLBACK_MENU_CATEGORIES = [
   {
-    _id: 'cat-signature-pasta', slug: 'signature-pasta', name: 'Signature Pasta',
+    _id: 'cat-signature-pasta', id: 'signature-pasta', slug: 'signature-pasta', name: 'Signature Pasta',
     description: null, highlightedItems: [], image: null, displayOrder: 1,
     items: [
       { _id: 'item-amatriciana', name: 'Amatriciana', description: null, price: '$18.00', popular: false, image: null },
@@ -193,7 +193,7 @@ const FALLBACK_MENU_CATEGORIES = [
     ],
   },
   {
-    _id: 'cat-signature-pinsa', slug: 'signature-pinsa', name: 'Signature Pinsa',
+    _id: 'cat-signature-pinsa', id: 'signature-pinsa', slug: 'signature-pinsa', name: 'Signature Pinsa',
     description: null, highlightedItems: [], image: null, displayOrder: 2,
     items: [
       { _id: 'item-piccantina', name: 'Piccantina', description: null, price: '$20.00', popular: false, image: null },
@@ -202,7 +202,7 @@ const FALLBACK_MENU_CATEGORIES = [
     ],
   },
   {
-    _id: 'cat-fresh-salads', slug: 'fresh-salads', name: 'Fresh Salads',
+    _id: 'cat-fresh-salads', id: 'fresh-salads', slug: 'fresh-salads', name: 'Fresh Salads',
     description: null, highlightedItems: [], image: null, displayOrder: 3,
     items: [
       { _id: 'item-arugula-salad', name: 'Arugula Salad', description: null, price: '$10.00', popular: false, image: null },
@@ -211,7 +211,7 @@ const FALLBACK_MENU_CATEGORIES = [
     ],
   },
   {
-    _id: 'cat-panini', slug: 'panini', name: 'Panini',
+    _id: 'cat-panini', id: 'panini', slug: 'panini', name: 'Panini',
     description: null, highlightedItems: [], image: null, displayOrder: 4,
     items: [
       { _id: 'item-meatball-panini', name: 'Meatball Panini', description: null, price: '$17.00', popular: false, image: null },
@@ -219,7 +219,7 @@ const FALLBACK_MENU_CATEGORIES = [
     ],
   },
   {
-    _id: 'cat-kids-meal', slug: 'kids-meal', name: 'Kids Meal',
+    _id: 'cat-kids-meal', id: 'kids-meal', slug: 'kids-meal', name: 'Kids Meal',
     description: null, highlightedItems: [], image: null, displayOrder: 5,
     items: [
       { _id: 'item-pasta-butter-cheese', name: 'Pasta With Butter & Cheese', description: null, price: '$10.00', popular: false, image: null },
@@ -227,7 +227,7 @@ const FALLBACK_MENU_CATEGORIES = [
     ],
   },
   {
-    _id: 'cat-beverages', slug: 'beverages', name: 'Beverages',
+    _id: 'cat-beverages', id: 'beverages', slug: 'beverages', name: 'Beverages',
     description: null, highlightedItems: [], image: null, displayOrder: 6,
     items: [
       { _id: 'item-beer', name: 'Beer', description: null, price: '$7.00', popular: false, image: null },
@@ -244,14 +244,14 @@ const FALLBACK_MENU_CATEGORIES = [
     ],
   },
   {
-    _id: 'cat-desserts', slug: 'desserts', name: 'Desserts',
+    _id: 'cat-desserts', id: 'desserts', slug: 'desserts', name: 'Desserts',
     description: null, highlightedItems: [], image: null, displayOrder: 7,
     items: [
       { _id: 'item-cannoli-cones', name: 'Cannoli Cones', description: null, price: '$6.00', popular: false, image: null },
     ],
   },
   {
-    _id: 'cat-italian-kitchen', slug: 'from-the-italian-kitchen', name: 'From the Italian Kitchen',
+    _id: 'cat-italian-kitchen', id: 'from-the-italian-kitchen', slug: 'from-the-italian-kitchen', name: 'From the Italian Kitchen',
     description: null, highlightedItems: [], image: null, displayOrder: 8,
     items: [
       { _id: 'item-pane-puffs', name: 'Pane Puffs', description: null, price: '$10.00', popular: false, image: null },
@@ -263,7 +263,7 @@ export async function getMenuCategoriesWithItems() {
   if (!isSanityConfigured()) return FALLBACK_MENU_CATEGORIES
   return client.fetch(
     `*[_type == "menuCategory"] | order(displayOrder asc) {
-      _id, "slug": slug.current, name, description, highlightedItems, image, displayOrder,
+      _id, "id": slug.current, "slug": slug.current, name, description, highlightedItems, image, displayOrder,
       "items": *[_type == "menuItem" && references(^._id) && isHidden != true] | order(displayOrder asc) {
         _id, name, description, price, popular, image, allergens,
         "locations": locations[]->{ _id, "slug": slug.current, name }
