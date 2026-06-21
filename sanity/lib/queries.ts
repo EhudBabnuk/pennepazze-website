@@ -180,63 +180,81 @@ export async function getLocationBySlug(slug: string): Promise<SanityLocation | 
 
 const FALLBACK_MENU_CATEGORIES = [
   {
-    _id: 'cat-fresh-pasta', slug: 'fresh-pasta', name: 'Fresh Pasta',
-    description: 'Every pasta shape rolled fresh each morning. Sauces made daily from scratch — no shortcuts, no jars.',
-    highlightedItems: ['Carbonara Pazza', 'Campanelle Pazze', 'Crema di Broccoli'],
-    image: null, displayOrder: 1,
+    _id: 'cat-signature-pasta', slug: 'signature-pasta', name: 'Signature Pasta',
+    description: null, highlightedItems: [], image: null, displayOrder: 1,
     items: [
-      { _id: 'i1', name: 'Carbonara Pazza', description: 'Guanciale, egg yolk, Pecorino Romano, black pepper.', price: '', popular: true },
-      { _id: 'i2', name: 'Campanelle Pazze', description: 'House-made campanelle with daily-crafted sauce.', price: '', popular: true },
-      { _id: 'i3', name: 'Gnocchi Crema di Gorgonzola', description: 'Soft gnocchi, gorgonzola cream sauce.', price: '', popular: false },
-      { _id: 'i4', name: 'Nonna Paula', description: "Chef's family recipe — ask your server for today's preparation.", price: '', popular: true },
-      { _id: 'i5', name: 'Ragu e Funghi', description: 'Slow-cooked ragu with wild mushrooms.', price: '', popular: false },
+      { _id: 'item-amatriciana', name: 'Amatriciana', description: null, price: '$18.00', popular: false, image: null },
+      { _id: 'item-campanelle-pazze', name: 'Campanelle Pazze', description: null, price: '$18.00', popular: false, image: null },
+      { _id: 'item-carbonara-pazza', name: 'Carbonara Pazza', description: null, price: '$19.00', popular: false, image: null },
+      { _id: 'item-crema-di-broccoli', name: 'Crema di Broccoli', description: null, price: '$18.00', popular: false, image: null },
+      { _id: 'item-gnocchi-gorgonzola', name: 'Gnocchi Crema di Gorgonzola', description: null, price: '$18.00', popular: false, image: null },
+      { _id: 'item-lasagna', name: 'Lasagna', description: null, price: '$18.00', popular: false, image: null },
+      { _id: 'item-nonna-paula', name: 'Nonna Paula', description: null, price: '$19.00', popular: false, image: null },
     ],
   },
   {
-    _id: 'cat-pinsa', slug: 'pinsa-romana', name: 'Pinsa Romana',
-    description: 'An ancient Roman recipe baked in our special oven, imported directly from Italy. Lighter, crispier, more digestible.',
-    highlightedItems: ['Pinsa Maiala', 'Pinsa Maleducata'],
-    image: null, displayOrder: 2,
+    _id: 'cat-signature-pinsa', slug: 'signature-pinsa', name: 'Signature Pinsa',
+    description: null, highlightedItems: [], image: null, displayOrder: 2,
     items: [
-      { _id: 'i6', name: 'Pinsa Maiala', description: 'Signature pinsa with premium toppings.', price: '', popular: true },
-      { _id: 'i7', name: 'Pinsa Maleducata', description: 'Bold flavors on a hand-stretched Roman base.', price: '', popular: true },
+      { _id: 'item-piccantina', name: 'Piccantina', description: null, price: '$20.00', popular: false, image: null },
+      { _id: 'item-pinsa-funghi', name: 'Pinsa Funghi', description: null, price: '$20.00', popular: false, image: null },
+      { _id: 'item-pinsa-maiala', name: 'Pinsa Maiala', description: null, price: '$19.00', popular: false, image: null },
     ],
   },
   {
-    _id: 'cat-lasagna', slug: 'lasagna', name: 'Lasagna',
-    description: 'The real kind. Layers of house-made pasta, slow-cooked ragu, and rich bechamel — baked until golden.',
-    image: null, displayOrder: 3,
+    _id: 'cat-fresh-salads', slug: 'fresh-salads', name: 'Fresh Salads',
+    description: null, highlightedItems: [], image: null, displayOrder: 3,
     items: [
-      { _id: 'i8', name: 'Lasagna Classica', description: 'House-made pasta layers, slow-cooked ragu, rich bechamel.', price: '', popular: true },
+      { _id: 'item-arugula-salad', name: 'Arugula Salad', description: null, price: '$10.00', popular: false, image: null },
+      { _id: 'item-beet-spinach-salad', name: 'Beet Spinach Salad', description: null, price: '$10.00', popular: false, image: null },
+      { _id: 'item-crudo-e-burrata', name: 'Crudo E Burrata', description: null, price: '$15.00', popular: false, image: null },
     ],
   },
   {
-    _id: 'cat-salads', slug: 'salads', name: 'Salads',
-    description: 'Fresh, seasonal, and actually satisfying. House-made dressings and Italian-inspired ingredients.',
-    image: null, displayOrder: 4,
+    _id: 'cat-panini', slug: 'panini', name: 'Panini',
+    description: null, highlightedItems: [], image: null, displayOrder: 4,
     items: [
-      { _id: 'i9', name: 'Caesar Salad', description: 'Crisp romaine, house-made dressing, shaved parmesan.', price: '', popular: false },
-      { _id: 'i10', name: 'Caprese', description: 'Fresh burrata, heirloom tomatoes, basil, aged balsamic.', price: '', popular: false },
+      { _id: 'item-meatball-panini', name: 'Meatball Panini', description: null, price: '$17.00', popular: false, image: null },
+      { _id: 'item-panini-caprese', name: 'Panini Caprese', description: null, price: '$15.00', popular: false, image: null },
+    ],
+  },
+  {
+    _id: 'cat-kids-meal', slug: 'kids-meal', name: 'Kids Meal',
+    description: null, highlightedItems: [], image: null, displayOrder: 5,
+    items: [
+      { _id: 'item-pasta-butter-cheese', name: 'Pasta With Butter & Cheese', description: null, price: '$10.00', popular: false, image: null },
+      { _id: 'item-pasta-tomato-cheese', name: 'Pasta With Tomato Sauce & Cheese', description: null, price: '$10.00', popular: false, image: null },
+    ],
+  },
+  {
+    _id: 'cat-beverages', slug: 'beverages', name: 'Beverages',
+    description: null, highlightedItems: [], image: null, displayOrder: 6,
+    items: [
+      { _id: 'item-beer', name: 'Beer', description: null, price: '$7.00', popular: false, image: null },
+      { _id: 'item-bottle-of-wine', name: 'Bottle of Wine', description: null, price: '$30.00', popular: false, image: null },
+      { _id: 'item-cappuccino', name: 'Cappuccino', description: null, price: '$5.00', popular: false, image: null },
+      { _id: 'item-coke-cola-de-mexico', name: 'Coke Cola de Mexico', description: null, price: '$3.50', popular: false, image: null },
+      { _id: 'item-espresso', name: 'Espresso', description: null, price: '$3.00', popular: false, image: null },
+      { _id: 'item-glass-of-wine', name: 'Glass of Wine', description: null, price: '$10.00', popular: false, image: null },
+      { _id: 'item-italian-beer', name: 'Italian Beer', description: null, price: '$8.00', popular: false, image: null },
+      { _id: 'item-italian-sparkling-water', name: 'Italian Sparkling Mineral Water', description: null, price: '$4.00', popular: false, image: null },
+      { _id: 'item-lemonade', name: 'Lemonade', description: null, price: '$3.50', popular: false, image: null },
+      { _id: 'item-mineral-water', name: 'Mineral Water', description: null, price: '$3.00', popular: false, image: null },
+      { _id: 'item-pennepazzee-cocktail', name: 'PennePazzee Cocktail', description: null, price: '$10.00', popular: false, image: null },
     ],
   },
   {
     _id: 'cat-desserts', slug: 'desserts', name: 'Desserts',
-    description: 'End on a high note. Made in-house — classic Italian recipes, done properly. The tiramisu is everything.',
-    highlightedItems: ['Tiramisu', 'Panna Cotta', 'Cannoli'],
-    image: null, displayOrder: 5,
+    description: null, highlightedItems: [], image: null, displayOrder: 7,
     items: [
-      { _id: 'i11', name: 'Tiramisu', description: 'House-made, espresso-soaked ladyfingers, mascarpone cream, cocoa.', price: '', popular: true },
-      { _id: 'i12', name: 'Panna Cotta', description: 'Vanilla bean, seasonal berry coulis.', price: '', popular: false },
-      { _id: 'i13', name: 'Cannoli', description: 'Crispy shells, sweet ricotta, chocolate chips.', price: '', popular: true },
+      { _id: 'item-cannoli-cones', name: 'Cannoli Cones', description: null, price: '$6.00', popular: false, image: null },
     ],
   },
   {
-    _id: 'cat-drinks', slug: 'drinks', name: 'Drinks',
-    description: 'Italian sodas, fresh lemonade, house wine, craft beer, espresso, and cappuccino.',
-    image: null, displayOrder: 6,
+    _id: 'cat-italian-kitchen', slug: 'from-the-italian-kitchen', name: 'From the Italian Kitchen',
+    description: null, highlightedItems: [], image: null, displayOrder: 8,
     items: [
-      { _id: 'i14', name: 'Cream Soda (bottomless)', description: 'House-made — a fan favorite.', price: '', popular: true },
-      { _id: 'i15', name: 'Espresso', description: 'Double-shot Italian espresso.', price: '', popular: false },
+      { _id: 'item-pane-puffs', name: 'Pane Puffs', description: null, price: '$10.00', popular: false, image: null },
     ],
   },
 ]
@@ -246,8 +264,9 @@ export async function getMenuCategoriesWithItems() {
   return client.fetch(
     `*[_type == "menuCategory"] | order(displayOrder asc) {
       _id, "slug": slug.current, name, description, highlightedItems, image, displayOrder,
-      "items": *[_type == "menuItem" && references(^._id)] | order(displayOrder asc) {
-        _id, name, description, price, popular, image, allergens
+      "items": *[_type == "menuItem" && references(^._id) && isHidden != true] | order(displayOrder asc) {
+        _id, name, description, price, popular, image, allergens,
+        "locations": locations[]->{ _id, "slug": slug.current, name }
       }
     }`,
     {}, REVALIDATE_SHORT,

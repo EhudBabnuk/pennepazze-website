@@ -602,62 +602,81 @@ async function seed() {
 
   // ═══════════════════════════════════════════════
   // MENU CATEGORIES
+  // Source of truth: pennepazze.net/menu/ (scraped 2026-06-21)
   // ═══════════════════════════════════════════════
   console.log('\n▸ Menu Categories')
   const categories = [
-    {
-      _id: 'cat-fresh-pasta',
-      _type: 'menuCategory',
-      name: 'Fresh Pasta',
-      slug: { _type: 'slug', current: 'fresh-pasta' },
-      description: 'This is what we are known for. Every pasta shape rolled fresh each morning using house-made dough, crafted by our pastaio who brought his recipes and technique straight from Sicily. Sauces made daily from scratch — no shortcuts, no jars. Made to order, every time.',
-      highlightedItems: ['Carbonara Pazza', 'Campanelle Pazze', 'Crema di Broccoli', 'Nonna Paula', 'Gnocchi Crema di Gorgonzola', 'Ragu e Funghi'],
-      displayOrder: 1,
-    },
-    {
-      _id: 'cat-pinsa',
-      _type: 'menuCategory',
-      name: 'Pinsa Romana',
-      slug: { _type: 'slug', current: 'pinsa-romana' },
-      description: 'An ancient Roman recipe baked in our special oven, imported directly from Italy. A lighter, crispier, more digestible base than regular pizza — the result of a slow, authentic dough process you cannot rush. Hand-stretched, simply topped, built on quality.',
-      highlightedItems: ['Pinsa Maiala', 'Pinsa Maleducata'],
-      displayOrder: 2,
-    },
-    {
-      _id: 'cat-lasagna',
-      _type: 'menuCategory',
-      name: 'Lasagna',
-      slug: { _type: 'slug', current: 'lasagna' },
-      description: 'The real kind. Layers of house-made pasta, slow-cooked ragu, and rich bechamel — baked until golden. Made from scratch, just like it should be.',
-      displayOrder: 3,
-    },
-    {
-      _id: 'cat-salads',
-      _type: 'menuCategory',
-      name: 'Salads',
-      slug: { _type: 'slug', current: 'salads' },
-      description: 'Fresh, seasonal, and actually satisfying. House-made dressings and Italian-inspired ingredients.',
-      displayOrder: 4,
-    },
-    {
-      _id: 'cat-desserts',
-      _type: 'menuCategory',
-      name: 'Desserts',
-      slug: { _type: 'slug', current: 'desserts' },
-      description: 'End on a high note. Our desserts are made in-house — classic Italian recipes, done properly. The tiramisu is everything.',
-      highlightedItems: ['Tiramisu', 'Panna Cotta', 'Cannoli'],
-      displayOrder: 5,
-    },
-    {
-      _id: 'cat-drinks',
-      _type: 'menuCategory',
-      name: 'Drinks',
-      slug: { _type: 'slug', current: 'drinks' },
-      description: 'Italian sodas, fresh lemonade, house wine, craft beer, espresso, and cappuccino. Our bottomless house-made cream soda is a fan favorite.',
-      displayOrder: 6,
-    },
+    { _id: 'cat-signature-pasta',  _type: 'menuCategory', name: 'Signature Pasta',          slug: { _type: 'slug', current: 'signature-pasta' },          displayOrder: 1 },
+    { _id: 'cat-signature-pinsa',  _type: 'menuCategory', name: 'Signature Pinsa',           slug: { _type: 'slug', current: 'signature-pinsa' },           displayOrder: 2 },
+    { _id: 'cat-fresh-salads',     _type: 'menuCategory', name: 'Fresh Salads',              slug: { _type: 'slug', current: 'fresh-salads' },              displayOrder: 3 },
+    { _id: 'cat-panini',           _type: 'menuCategory', name: 'Panini',                    slug: { _type: 'slug', current: 'panini' },                    displayOrder: 4 },
+    { _id: 'cat-kids-meal',        _type: 'menuCategory', name: 'Kids Meal',                 slug: { _type: 'slug', current: 'kids-meal' },                 displayOrder: 5 },
+    { _id: 'cat-beverages',        _type: 'menuCategory', name: 'Beverages',                 slug: { _type: 'slug', current: 'beverages' },                 displayOrder: 6 },
+    { _id: 'cat-desserts',         _type: 'menuCategory', name: 'Desserts',                  slug: { _type: 'slug', current: 'desserts' },                  displayOrder: 7 },
+    { _id: 'cat-italian-kitchen',  _type: 'menuCategory', name: 'From the Italian Kitchen',  slug: { _type: 'slug', current: 'from-the-italian-kitchen' },  displayOrder: 8 },
   ]
   for (const c of categories) await upsert(c)
+
+  // ═══════════════════════════════════════════════
+  // MENU ITEMS
+  // Source of truth: pennepazze.net/menu/ (scraped 2026-06-21)
+  // Descriptions absent from source site — left empty.
+  // Images left empty — owner manages via CMS.
+  // Locations left empty — all items available at all locations.
+  // ═══════════════════════════════════════════════
+  console.log('\n▸ Menu Items')
+  const menuItems = [
+    // Signature Pasta
+    { _id: 'item-amatriciana',        name: 'Amatriciana',                       price: '$18.00', catId: 'cat-signature-pasta', ord: 1  },
+    { _id: 'item-campanelle-pazze',   name: 'Campanelle Pazze',                  price: '$18.00', catId: 'cat-signature-pasta', ord: 2  },
+    { _id: 'item-carbonara-pazza',    name: 'Carbonara Pazza',                   price: '$19.00', catId: 'cat-signature-pasta', ord: 3  },
+    { _id: 'item-crema-di-broccoli',  name: 'Crema di Broccoli',                 price: '$18.00', catId: 'cat-signature-pasta', ord: 4  },
+    { _id: 'item-gnocchi-gorgonzola', name: 'Gnocchi Crema di Gorgonzola',       price: '$18.00', catId: 'cat-signature-pasta', ord: 5  },
+    { _id: 'item-lasagna',            name: 'Lasagna',                           price: '$18.00', catId: 'cat-signature-pasta', ord: 6  },
+    { _id: 'item-nonna-paula',        name: 'Nonna Paula',                       price: '$19.00', catId: 'cat-signature-pasta', ord: 7  },
+    // Signature Pinsa
+    { _id: 'item-piccantina',         name: 'Piccantina',                        price: '$20.00', catId: 'cat-signature-pinsa', ord: 1  },
+    { _id: 'item-pinsa-funghi',       name: 'Pinsa Funghi',                      price: '$20.00', catId: 'cat-signature-pinsa', ord: 2  },
+    { _id: 'item-pinsa-maiala',       name: 'Pinsa Maiala',                      price: '$19.00', catId: 'cat-signature-pinsa', ord: 3  },
+    // Fresh Salads
+    { _id: 'item-arugula-salad',      name: 'Arugula Salad',                     price: '$10.00', catId: 'cat-fresh-salads',    ord: 1  },
+    { _id: 'item-beet-spinach-salad', name: 'Beet Spinach Salad',                price: '$10.00', catId: 'cat-fresh-salads',    ord: 2  },
+    { _id: 'item-crudo-e-burrata',    name: 'Crudo E Burrata',                   price: '$15.00', catId: 'cat-fresh-salads',    ord: 3  },
+    // Panini
+    { _id: 'item-meatball-panini',    name: 'Meatball Panini',                   price: '$17.00', catId: 'cat-panini',          ord: 1  },
+    { _id: 'item-panini-caprese',     name: 'Panini Caprese',                    price: '$15.00', catId: 'cat-panini',          ord: 2  },
+    // Kids Meal
+    { _id: 'item-pasta-butter-cheese', name: 'Pasta With Butter & Cheese',       price: '$10.00', catId: 'cat-kids-meal',       ord: 1  },
+    { _id: 'item-pasta-tomato-cheese', name: 'Pasta With Tomato Sauce & Cheese', price: '$10.00', catId: 'cat-kids-meal',       ord: 2  },
+    // Beverages
+    { _id: 'item-beer',                      name: 'Beer',                        price: '$7.00',  catId: 'cat-beverages',       ord: 1  },
+    { _id: 'item-bottle-of-wine',            name: 'Bottle of Wine',              price: '$30.00', catId: 'cat-beverages',       ord: 2  },
+    { _id: 'item-cappuccino',                name: 'Cappuccino',                  price: '$5.00',  catId: 'cat-beverages',       ord: 3  },
+    { _id: 'item-coke-cola-de-mexico',       name: 'Coke Cola de Mexico',         price: '$3.50',  catId: 'cat-beverages',       ord: 4  },
+    { _id: 'item-espresso',                  name: 'Espresso',                    price: '$3.00',  catId: 'cat-beverages',       ord: 5  },
+    { _id: 'item-glass-of-wine',             name: 'Glass of Wine',               price: '$10.00', catId: 'cat-beverages',       ord: 6  },
+    { _id: 'item-italian-beer',              name: 'Italian Beer',                price: '$8.00',  catId: 'cat-beverages',       ord: 7  },
+    { _id: 'item-italian-sparkling-water',   name: 'Italian Sparkling Mineral Water', price: '$4.00', catId: 'cat-beverages',   ord: 8  },
+    { _id: 'item-lemonade',                  name: 'Lemonade',                    price: '$3.50',  catId: 'cat-beverages',       ord: 9  },
+    { _id: 'item-mineral-water',             name: 'Mineral Water',               price: '$3.00',  catId: 'cat-beverages',       ord: 10 },
+    { _id: 'item-pennepazzee-cocktail',      name: 'PennePazzee Cocktail',        price: '$10.00', catId: 'cat-beverages',       ord: 11 },
+    // Desserts
+    { _id: 'item-cannoli-cones',      name: 'Cannoli Cones',                     price: '$6.00',  catId: 'cat-desserts',         ord: 1  },
+    // From the Italian Kitchen
+    { _id: 'item-pane-puffs',         name: 'Pane Puffs',                        price: '$10.00', catId: 'cat-italian-kitchen',  ord: 1  },
+  ]
+  for (const item of menuItems) {
+    await upsert({
+      _id: item._id,
+      _type: 'menuItem',
+      name: item.name,
+      price: item.price,
+      popular: false,
+      isHidden: false,
+      displayOrder: item.ord,
+      category: { _type: 'reference', _ref: item.catId },
+    })
+  }
 
   // ═══════════════════════════════════════════════
   // CATERING OFFERINGS (Benefit Cards)

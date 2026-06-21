@@ -61,6 +61,20 @@ export const menuItem = defineType({
       description: 'Lower number = shown first within the category.',
       initialValue: 99,
     }),
+    defineField({
+      name: 'locations',
+      title: 'Available At',
+      type: 'array',
+      description: 'Which locations serve this item. Leave empty to show at all locations.',
+      of: [{ type: 'reference', to: [{ type: 'location' }] }],
+    }),
+    defineField({
+      name: 'isHidden',
+      title: 'Hide This Item',
+      type: 'boolean',
+      description: 'Temporarily hide this item from the menu without deleting it.',
+      initialValue: false,
+    }),
   ],
   orderings: [{ title: 'Display Order', name: 'displayOrder', by: [{ field: 'displayOrder', direction: 'asc' }] }],
   preview: {
