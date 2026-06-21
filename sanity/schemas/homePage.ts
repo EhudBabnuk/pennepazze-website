@@ -10,6 +10,7 @@ export const homePage = defineType({
     { name: 'why', title: 'Why PennePazze' },
     { name: 'authenticity', title: 'Seed Oil Strip' },
     { name: 'howItWorks', title: 'How It Works' },
+    { name: 'offeringTiles', title: 'Offering Tiles' },
     { name: 'gelato', title: 'Gelato Banner' },
     { name: 'story', title: 'Story Teaser' },
     { name: 'instagram', title: 'Instagram Strip' },
@@ -106,6 +107,32 @@ export const homePage = defineType({
           }],
         }),
       ],
+    }),
+
+    // ─── Offering Tiles ──────────────────────────────────────
+    defineField({
+      name: 'menuTileImage',
+      title: '"Our Menu" Tile Image',
+      type: 'image',
+      group: 'offeringTiles',
+      options: { hotspot: true },
+      description: 'Background photo for the Our Menu tile on the homepage.',
+    }),
+    defineField({
+      name: 'cateringTileImage',
+      title: '"Catering" Tile Image',
+      type: 'image',
+      group: 'offeringTiles',
+      options: { hotspot: true },
+      description: 'Background photo for the Catering tile on the homepage.',
+    }),
+    defineField({
+      name: 'aboutTileImage',
+      title: '"About Us" Tile Image',
+      type: 'image',
+      group: 'offeringTiles',
+      options: { hotspot: true },
+      description: 'Background photo for the About Us tile on the homepage.',
     }),
 
     // ─── Gelato Banner ───────────────────────────────────────

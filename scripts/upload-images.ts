@@ -122,6 +122,40 @@ async function main() {
     featuredImage: imageRef(pressFeaturedAsset),
   })
 
+  // ── Homepage: offering tile images + story teaser ───────────────────────
+  console.log('\nHome Page — Offering Tiles + Story Teaser')
+  const menuTileAsset    = await uploadImage('MARCH 2024/BU5A9618.jpg')
+  const cateringTileAsset = await uploadImage('September 10 2025/IMG_5540.jpg')
+  const aboutTileAsset   = await uploadImage('june 16 2026/_DSC3281.jpg')
+  const storyTeaserAsset = await uploadImage('mar 4 2026/_DSC5454.jpg')
+
+  await patchSingleton('homePage', {
+    menuTileImage:    imageRef(menuTileAsset),
+    cateringTileImage: imageRef(cateringTileAsset),
+    aboutTileImage:   imageRef(aboutTileAsset),
+    'storyTeaser.image': imageRef(storyTeaserAsset),
+  })
+
+  // ── Menu category images ─────────────────────────────────────────────────
+  console.log('\nMenu Categories — Category Images')
+  const sigPastaImgAsset   = await uploadImage('MARCH 2024/BU5A9618.jpg')
+  const sigPinsaImgAsset   = await uploadImage('September 10 2025/IMG_5510.jpg')
+  const saladsImgAsset     = await uploadImage('MARCH 2024/BU5A9314.jpg')
+  const paniniImgAsset     = await uploadImage('September 10 2025/IMG_5534.jpg')
+  const kidsImgAsset       = await uploadImage('September 10 2025/IMG_5502.jpg')
+  const beveragesImgAsset  = await uploadImage('MARCH 2024/BU5A9620.jpg')
+  const dessertsImgAsset   = await uploadImage('june 16 2026/_DSC3310.jpg')
+  const italianKitchenAsset = await uploadImage('june 16 2026/_DSC3277.jpg')
+
+  await patchDoc('cat-signature-pasta',  { image: imageRef(sigPastaImgAsset) })
+  await patchDoc('cat-signature-pinsa',  { image: imageRef(sigPinsaImgAsset) })
+  await patchDoc('cat-fresh-salads',     { image: imageRef(saladsImgAsset) })
+  await patchDoc('cat-panini',           { image: imageRef(paniniImgAsset) })
+  await patchDoc('cat-kids-meal',        { image: imageRef(kidsImgAsset) })
+  await patchDoc('cat-beverages',        { image: imageRef(beveragesImgAsset) })
+  await patchDoc('cat-desserts',         { image: imageRef(dessertsImgAsset) })
+  await patchDoc('cat-italian-kitchen',  { image: imageRef(italianKitchenAsset) })
+
   console.log('\n✅  Done. All images uploaded and documents patched.\n')
 }
 

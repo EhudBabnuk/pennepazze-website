@@ -25,6 +25,10 @@ export default async function HomePage() {
   const authenticity = pageData?.authenticityStrip ?? {}
   const storyTeaser = pageData?.storyTeaser ?? {}
 
+  const menuTileImage    = pageData?.menuTileImage    ? resolveImage(pageData.menuTileImage as never, '/images/tile-menu.jpg')    : '/images/tile-menu.jpg'
+  const cateringTileImage = pageData?.cateringTileImage ? resolveImage(pageData.cateringTileImage as never, '/images/tile-catering.jpg') : '/images/tile-catering.jpg'
+  const aboutTileImage   = pageData?.aboutTileImage   ? resolveImage(pageData.aboutTileImage as never, '/images/tile-about.jpg')   : '/images/tile-about.jpg'
+
   return (
     <>
       {/* Full-Bleed Video Hero */}
@@ -107,15 +111,15 @@ export default async function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: 'Our Menu', description: 'Fresh pasta rolled daily. House-made sauces. Roman pinsa. Zero seed oils — from day one.', href: '/menu', buttonLabel: 'View Menu', imageFallback: '/images/tile-menu.jpg' },
-              { title: 'Catering', description: 'We bring PennePazze to your event — from boxed lunches to full Italian spreads.', href: '/catering', buttonLabel: 'Learn More', imageFallback: '/images/tile-catering.jpg' },
-              { title: 'About Us', description: 'The story behind PennePazze — from Italy to Nashville, with no compromises.', href: '/about', buttonLabel: 'Read More', imageFallback: '/images/tile-about.jpg' },
+              { title: 'Our Menu', description: 'Fresh pasta rolled daily. House-made sauces. Roman pinsa. Zero seed oils — from day one.', href: '/menu', buttonLabel: 'View Menu', image: menuTileImage },
+              { title: 'Catering', description: 'We bring PennePazze to your event — from boxed lunches to full Italian spreads.', href: '/catering', buttonLabel: 'Learn More', image: cateringTileImage },
+              { title: 'About Us', description: 'The story behind PennePazze — from Italy to Nashville, with no compromises.', href: '/about', buttonLabel: 'Read More', image: aboutTileImage },
             ].map((tile, index) => (
               <div key={tile.title} className={index === 1 ? "md:translate-y-10" : ""}>
                 <OfferingTile
                   title={tile.title}
                   description={tile.description}
-                  image={tile.imageFallback}
+                  image={tile.image}
                   href={tile.href}
                   buttonLabel={tile.buttonLabel}
                 />
