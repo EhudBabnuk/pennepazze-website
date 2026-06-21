@@ -87,7 +87,7 @@ export default function LocationContent({ location }: LocationContentProps) {
               ) : (
                 <button
                   disabled
-                  className="inline-flex items-center justify-center px-8 py-3 rounded bg-muted text-muted-foreground cursor-not-allowed opacity-60"
+                  className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-muted text-muted-foreground cursor-not-allowed opacity-60"
                   style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif", fontWeight: 700, fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.05em" }}
                   aria-label="Ordering not yet available at this location"
                 >
@@ -176,10 +176,10 @@ export default function LocationContent({ location }: LocationContentProps) {
             Explore our full menu and place your order online, or stop in for lunch or dinner.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/menu" className="inline-flex items-center justify-center gap-2 bg-[#D5B13A] text-black px-6 py-3 font-heading font-bold uppercase text-sm tracking-wide rounded hover:bg-[#C1A561] transition-colors">
+            <Link href="/menu" className="inline-flex items-center justify-center gap-2 bg-[#D5B13A] text-black px-6 py-3 font-heading font-bold uppercase text-sm tracking-wide rounded-full hover:bg-[#C1A561] transition-colors">
               View Menu <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/catering" className="inline-flex items-center justify-center gap-2 border-2 border-foreground text-foreground px-6 py-3 font-heading font-bold uppercase text-sm tracking-wide rounded hover:bg-foreground hover:text-white transition-colors">
+            <Link href="/catering" className="inline-flex items-center justify-center gap-2 border-2 border-foreground text-foreground px-6 py-3 font-heading font-bold uppercase text-sm tracking-wide rounded-full hover:bg-foreground hover:text-white transition-colors">
               Catering Info
             </Link>
           </div>

@@ -46,7 +46,7 @@ export default async function MenuPage() {
                   </PrimaryCTAButton>
                 )}
                 <Button
-                  className="px-8 py-3 border-2 border-[#C1A561] bg-transparent text-[#C1A561] font-heading font-bold uppercase tracking-wider hover:bg-[#C1A561] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C1A561] rounded flex items-center gap-2"
+                  className="px-8 py-3 border-2 border-[#C1A561] bg-transparent text-[#C1A561] font-heading font-bold uppercase tracking-wider hover:bg-[#C1A561] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C1A561] rounded-full flex items-center gap-2"
                   style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif", fontSize: "0.875rem" }}
                 >
                   <Share2 className="w-5 h-5" strokeWidth={2} />

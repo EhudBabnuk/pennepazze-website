@@ -83,7 +83,7 @@ export default async function HomePage() {
             </PrimaryCTAButton>
             <Link
               href="/menu"
-              className="inline-flex items-center justify-center rounded px-6 py-3 border border-white/70 text-white uppercase tracking-wide leading-normal transition-colors duration-200 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50"
+              className="inline-flex items-center justify-center rounded-full px-6 py-3 border border-white/70 text-white uppercase tracking-wide leading-normal transition-colors duration-200 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50"
               style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif", fontWeight: 700, fontSize: "0.875rem" }}
             >
               {heroCtaMenu}
@@ -131,11 +131,7 @@ export default async function HomePage() {
 
       {/* Authenticity Strip */}
       <section className="w-full py-16 md:py-24 bg-[#1a1a1a] text-white relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none opacity-[0.12]" style={{
-          backgroundImage: `url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pasta21.05%201%20%5BVectorized%5D-2-GGDrpMph7Hcr7wBG5VtQJmhOnPVZNH.png')`,
-          backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat",
-        }} />
-        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#111]/80 via-[#1a1a1a] to-[#272727]/90 pointer-events-none" />
         <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-10 text-center">
           <p className="text-[#D5B13A] mb-4 uppercase tracking-wider" style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.1em" }}>
             {authenticity.preText ?? 'PennePazze has always been'}
@@ -213,7 +209,7 @@ function OfferingTile({ title, description, image, href, buttonLabel }: {
           {description}
         </p>
         <Link href={href}
-          className="inline-flex items-center justify-center rounded px-6 py-3 uppercase tracking-wide leading-normal transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D5B13A] bg-[#D5B13A] text-black hover:bg-[#C1A561]"
+          className="inline-flex items-center justify-center rounded-full px-6 py-3 uppercase tracking-wide leading-normal transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D5B13A] bg-[#D5B13A] text-black hover:bg-[#C1A561]"
           style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif", fontWeight: 700, fontSize: "0.875rem" }}>
           {buttonLabel}
         </Link>

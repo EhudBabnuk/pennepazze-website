@@ -37,7 +37,7 @@ export function CateringRequestForm({ locations }: CateringRequestFormProps) {
               <Button
                 key={getLocationId(loc)}
                 onClick={() => setSelectedIndex(index)}
-                className={`flex-1 py-3 font-heading font-bold uppercase text-sm tracking-wider rounded transition-all ${
+                className={`flex-1 py-3 font-heading font-bold uppercase text-sm tracking-wider rounded-full transition-all ${
                   selectedIndex === index
                     ? "bg-[#D5B13A] text-black hover:bg-[#C1A561]"
                     : "bg-white text-[#D5B13A] border-2 border-[#D5B13A] hover:bg-[#D5B13A]/5"
